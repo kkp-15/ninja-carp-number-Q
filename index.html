@@ -2,81 +2,114 @@
 <html lang="ja">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>CARP NUMBER QUIZ 2025</title>
   <style>
     body {
-      font-family: sans-serif;
+      font-family: "Arial", "Hiragino Kaku Gothic ProN", sans-serif;
       text-align: center;
-      background-color: #fce4ec;
-      color: #c2185b;
+      background-color: #fff0f0;
+      color: #b50000;
       padding: 20px;
     }
+
     h1 {
+      color: #c90000;
       font-size: 2em;
-      margin-bottom: 10px;
+      margin-bottom: 1rem;
     }
+
     #startBtn {
       font-size: 1.2em;
-      padding: 10px 30px;
-      background-color: #c2185b;
+      padding: 10px 20px;
+      background-color: #c70000;
       color: white;
       border: none;
       border-radius: 8px;
       cursor: pointer;
     }
-    #timer, #score, #question, #btn1, #btn2, #judge, #result, #share {
-      margin-top: 20px;
-      display: none;
-    }
-    #btn1, #btn2 {
+
+    #question {
       font-size: 1.5em;
+      margin: 30px 0;
+    }
+
+    .choice-btn {
+      font-size: 1.3em;
+      padding: 12px 30px;
       margin: 10px;
-      padding: 10px 30px;
-      background-color: #ffffff;
-      color: #c2185b;
-      border: 2px solid #c2185b;
+      border: none;
       border-radius: 10px;
+      background-color: #ffdddd;
+      color: #b50000;
       cursor: pointer;
     }
+
     #judge {
       font-size: 3em;
-      margin-top: 30px;
+      margin: 20px 0;
+      height: 1.2em;
     }
+
     #result {
       font-size: 1.5em;
-      font-weight: bold;
       margin-top: 30px;
     }
+
+    #share {
+      margin-top: 20px;
+    }
+
     #share a {
       display: inline-block;
-      margin-top: 20px;
-      font-size: 1.2em;
-      background-color: #1DA1F2;
+      margin-top: 10px;
+      padding: 10px 15px;
+      background-color: #1da1f2;
       color: white;
-      padding: 10px 20px;
-      border-radius: 8px;
+      border-radius: 6px;
       text-decoration: none;
+    }
+
+    #share a:hover {
+      opacity: 0.8;
+    }
+
+    #timer,
+    #score {
+      font-weight: bold;
+      font-size: 1.2em;
+      margin: 10px 0;
+    }
+
+    #footer {
+      margin-top: 40px;
+      font-size: 0.9em;
+      color: #888;
     }
   </style>
 </head>
 <body>
   <h1>CARP NUMBER QUIZ 2025</h1>
-  <div id="startBtn">スタート</div>
 
-  <div id="timer">残り時間: 60秒</div>
-  <div id="score">得点: 0</div>
-  <div id="question">ここに選手名</div>
+  <button id="startBtn">スタート</button>
 
-  <button id="btn1">番号1</button>
-  <button id="btn2">番号2</button>
+  <div id="timer" style="display: none;">残り時間: 60秒</div>
+  <div id="score" style="display: none;">得点: 0</div>
+  <div id="question" style="display: none;"></div>
+
+  <button id="btn1" class="choice-btn" style="display: none;"></button>
+  <button id="btn2" class="choice-btn" style="display: none;"></button>
 
   <div id="judge"></div>
-  <div id="result"></div>
 
-  <div id="share">
-    <a id="shareLink" href="#" target="_blank">Xでシェア</a><br><br>
-    <a href="index.html">もう一度挑戦する</a>
+  <div id="result" style="display: none;"></div>
+
+  <div id="share" style="display: none;">
+    <a id="shareLink" href="#" target="_blank" rel="noopener noreferrer">Xでシェア</a>
+  </div>
+
+  <div id="footer">
+    Powered by <a href="https://x.com/kkp_webninja" target="_blank">@kkp_webninja</a>
   </div>
 
   <script src="main.js"></script>
