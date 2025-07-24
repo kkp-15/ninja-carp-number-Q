@@ -2,53 +2,67 @@
 <html lang="ja">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>CARP NUMBER QUIZ</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <style>
     body {
-      font-family: "Hiragino Kaku Gothic ProN", sans-serif;
+      font-family: sans-serif;
       text-align: center;
-      background-color: white;
-      color: #c60000;
-      padding: 20px;
+      background-color: #fff;
+      color: #c00;
     }
+
     h1 {
-      font-size: 2rem;
-      margin-bottom: 10px;
+      font-size: 32px;
+      margin-top: 20px;
     }
-    #question {
-      font-size: 1.5rem;
-      margin: 20px 0;
+
+    #timer, #score, #question {
+      margin: 20px;
+      font-size: 20px;
     }
-    .btn {
-      background-color: #c60000;
-      color: white;
+
+    button {
+      font-size: 24px;
+      margin: 10px 20px;
+      padding: 10px 30px;
       border: none;
-      padding: 15px 30px;
-      margin: 10px;
-      font-size: 1.2rem;
       border-radius: 8px;
-      cursor: pointer;
+      background-color: #e60012;
+      color: white;
     }
-    #score, #timer {
-      font-size: 1.2rem;
-      margin: 10px;
-    }
-    #result {
-      margin-top: 30px;
-      font-size: 1.5rem;
-    }
-    #share {
-      margin-top: 10px;
-    }
+
     #judge {
-      position: fixed;
-      top: 35%;
-      left: 50%;
-      transform: translate(-50%, -50%);
-      font-size: 4rem;
+      font-size: 48px;
+      text-align: center;
+      margin-top: 40px;
       display: none;
-      z-index: 999;
+    }
+
+    #result {
+      font-size: 24px;
+      margin-top: 30px;
+      display: none;
+    }
+
+    #share {
+      display: none;
+      margin-top: 40px;
+      text-align: center;
+    }
+
+    #share a {
+      display: inline-block;
+      margin: 10px 20px;
+      padding: 10px 20px;
+      background-color: #e60012;
+      color: white;
+      text-decoration: none;
+      border-radius: 8px;
+    }
+
+    #retry {
+      background-color: #444;
     }
   </style>
 </head>
@@ -56,16 +70,17 @@
   <h1>CARP NUMBER QUIZ</h1>
   <div id="timer">残り時間: 60秒</div>
   <div id="score">得点: 0</div>
-  <div id="question">問題が表示されます</div>
-  <button id="btn1" class="btn"></button>
-  <button id="btn2" class="btn"></button>
+  <div id="question">選手名を表示</div>
+  <button id="btn1">番号1</button>
+  <button id="btn2">番号2</button>
 
-  <div id="judge"></div>
+  <div id="judge"></div> <!-- ⭕️ or ❌ -->
 
-  <div id="result" style="display:none;"></div>
-  <div id="share" style="display:none;">
-    <a id="shareLink" class="btn" href="#" target="_blank">Xでシェア</a>
-    <button onclick="location.reload()" class="btn">もう一度挑戦</button>
+  <div id="result"></div>
+
+  <div id="share">
+    <a id="shareLink" href="#" target="_blank">Xでシェア</a>
+    <a id="retry" href="">もう一度</a>
   </div>
 
   <script src="main.js"></script>
