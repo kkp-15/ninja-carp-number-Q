@@ -64,24 +64,36 @@
     #retry {
       background-color: #444;
     }
+
+    footer {
+      margin-top: 50px;
+      font-size: 14px;
+      color: #666;
+    }
   </style>
 </head>
 <body>
   <h1>CARP NUMBER QUIZ</h1>
-  <div id="timer">残り時間: 60秒</div>
-  <div id="score">得点: 0</div>
-  <div id="question">選手名を表示</div>
-  <button id="btn1">番号1</button>
-  <button id="btn2">番号2</button>
 
-  <div id="judge"></div> <!-- ⭕️ or ❌ -->
+  <button id="startBtn">スタート</button>
 
+  <div id="timer" style="display:none;">残り時間: 60秒</div>
+  <div id="score" style="display:none;">得点: 0</div>
+  <div id="question" style="display:none;">選手名を表示</div>
+  <button id="btn1" style="display:none;">番号1</button>
+  <button id="btn2" style="display:none;">番号2</button>
+
+  <div id="judge"></div>
   <div id="result"></div>
 
   <div id="share">
     <a id="shareLink" href="#" target="_blank">Xでシェア</a>
     <a id="retry" href="">もう一度</a>
   </div>
+
+  <footer>
+    © 2025 CARP NUMBER QUIZ
+  </footer>
 
   <script src="main.js"></script>
 </body>
