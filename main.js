@@ -1,11 +1,11 @@
 const players = [
   { name: "羽月 隆太郎", number: "00" },
-  { name: "上本 崇司", number: "00" },
-  { name: "田中 広輔", number: "02" },
-  { name: "矢野 雅哉", number: "04" },
-  { name: "小園 海斗", number: "05" },
-  { name: "堂林 翔太", number: "07" },
-  { name: "秋山 翔吾", number: "09" },
+  { name: "上本 崇司", number: "0" },
+  { name: "田中 広輔", number: "2" },
+  { name: "矢野 雅哉", number: "4" },
+  { name: "小園 海斗", number: "5" },
+  { name: "堂林 翔太", number: "7" },
+  { name: "秋山 翔吾", number: "9" },
   { name: "佐々木 泰", number: "10" },
   { name: "大道 温貴", number: "12" },
   { name: "森浦 大輔", number: "13" },
@@ -46,7 +46,7 @@ const players = [
   { name: "中村 健人", number: "50" },
   { name: "末包 昇大", number: "52" },
   { name: "岡本 駿", number: "53" },
-  { name: "鳴澤 雄也", number: "54" },
+  { name: "韮澤 雄也", number: "54" },
   { name: "松山 竜平", number: "55" },
   { name: "久保 修", number: "56" },
   { name: "持丸 泰輝", number: "57" },
@@ -161,11 +161,11 @@ function endGame() {
   resultEl.style.display = "block";
   resultEl.textContent = `あなたのスコア: ${score} 点`;
   shareDiv.style.display = "block";
-  const tweet = `CARP NUMBER QUIZ⚾\\nスコア: ${score}点\\n#カープ #背番号クイズ`;
+
+  const tweet = `CARP NUMBER QUIZ⚾️\nスコア: ${score}点\n\n作成者: @kkp_webninja\n#カープ #背番号クイズ`;
   const url = encodeURIComponent(window.location.href);
   shareLink.href = `https://twitter.com/intent/tweet?text=${encodeURIComponent(tweet)}&url=${url}`;
 }
 
-// ゲーム開始
 startTimer();
 showQuestion();
