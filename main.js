@@ -85,6 +85,7 @@ const players = [
 let score = 0;
 let timeLeft = 60;
 let timerId;
+let currentQuestion = null;
 
 const startBtn = document.getElementById("startBtn");
 const timerDiv = document.getElementById("timer");
@@ -98,7 +99,6 @@ const shareDiv = document.getElementById("share");
 const shareLink = document.getElementById("shareLink");
 
 startBtn.addEventListener("click", () => {
-  // リセット処理
   clearInterval(timerId);
   score = 0;
   timeLeft = 60;
@@ -107,7 +107,6 @@ startBtn.addEventListener("click", () => {
   resultDiv.style.display = "none";
   shareDiv.style.display = "none";
 
-  // UI表示（スタートボタンは隠さない）
   timerDiv.style.display = "block";
   scoreDiv.style.display = "block";
   questionDiv.style.display = "block";
@@ -116,7 +115,6 @@ startBtn.addEventListener("click", () => {
 
   nextQuestion();
 
-  // タイマー開始
   timerId = setInterval(() => {
     timeLeft--;
     timerDiv.textContent = `残り時間: ${timeLeft}秒`;
@@ -127,30 +125,30 @@ startBtn.addEventListener("click", () => {
   }, 1000);
 });
 
+btn1.addEventListener("click", () => handleAnswer(btn1.textContent));
+btn2.addEventListener("click", () => handleAnswer(btn2.textContent));
+
 function nextQuestion() {
-  const current = players[Math.floor(Math.random() * players.length)];
+  const correct = players[Math.floor(Math.random() * players.length)];
   let wrong;
   do {
     wrong = players[Math.floor(Math.random() * players.length)];
-  } while (wrong.number === current.number);
+  } while (wrong.number === correct.number);
 
-  questionDiv.textContent = `${current.name} の背番号は？`;
+  currentQuestion = correct;
+  questionDiv.textContent = `${correct.name} の背番号は？`;
+
   const isFirst = Math.random() < 0.5;
-  btn1.textContent = isFirst ? current.number : wrong.number;
-  btn2.textContent = isFirst ? wrong.number : current.number;
+  btn1.textContent = isFirst ? correct.number : wrong.number;
+  btn2.textContent = isFirst ? wrong.number : correct.number;
+}
 
-  function judgeAnswer(e) {
-    const isCorrect = e.target.textContent === current.number;
-    showJudge(isCorrect);
-    score += isCorrect ? 1 : -1;
-    scoreDiv.textContent = `得点: ${score}`;
-    btn1.removeEventListener("click", judgeAnswer);
-    btn2.removeEventListener("click", judgeAnswer);
-    setTimeout(nextQuestion, 600);
-  }
-
-  btn1.addEventListener("click", judgeAnswer);
-  btn2.addEventListener("click", judgeAnswer);
+function handleAnswer(selected) {
+  const isCorrect = selected === currentQuestion.number;
+  showJudge(isCorrect);
+  score += isCorrect ? 1 : -1;
+  scoreDiv.textContent = `得点: ${score}`;
+  setTimeout(nextQuestion, 600);
 }
 
 function showJudge(isCorrect) {
