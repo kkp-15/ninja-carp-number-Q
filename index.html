@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>CARP NUMBER QUIZ</title>
+  <style>
+    body {
+      font-family: "Hiragino Kaku Gothic ProN", sans-serif;
+      text-align: center;
+      background-color: white;
+      color: #c60000;
+      padding: 20px;
+    }
+    h1 {
+      font-size: 2rem;
+      margin-bottom: 10px;
+    }
+    #question {
+      font-size: 1.5rem;
+      margin: 20px 0;
+    }
+    .btn {
+      background-color: #c60000;
+      color: white;
+      border: none;
+      padding: 15px 30px;
+      margin: 10px;
+      font-size: 1.2rem;
+      border-radius: 8px;
+      cursor: pointer;
+    }
+    #score, #timer {
+      font-size: 1.2rem;
+      margin: 10px;
+    }
+    #result {
+      margin-top: 30px;
+      font-size: 1.5rem;
+    }
+    #share {
+      margin-top: 10px;
+    }
+  </style>
+</head>
+<body>
+  <h1>CARP NUMBER QUIZ</h1>
+  <div id="timer">残り時間: 60秒</div>
+  <div id="score">得点: 0</div>
+  <div id="question">問題が表示されます</div>
+  <button id="btn1" class="btn"></button>
+  <button id="btn2" class="btn"></button>
+
+  <div id="result" style="display:none;"></div>
+  <div id="share" style="display:none;">
+    <a id="shareLink" class="btn" href="#" target="_blank">Xでシェア</a>
+    <button onclick="location.reload()" class="btn">もう一度挑戦</button>
+  </div>
+
+  <script src="main.js"></script>
+</body>
+</html>
