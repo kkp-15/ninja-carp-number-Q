@@ -81,7 +81,6 @@ const players = [
   { "number": "131", "name": "ロベルト" }
 ];
 
-
 let score = 0;
 let timeLeft = 60;
 let timerId;
