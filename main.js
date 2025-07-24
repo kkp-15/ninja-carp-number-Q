@@ -98,13 +98,25 @@ const shareDiv = document.getElementById("share");
 const shareLink = document.getElementById("shareLink");
 
 startBtn.addEventListener("click", () => {
-  startBtn.style.display = "none";
+  // リセット処理
+  clearInterval(timerId);
+  score = 0;
+  timeLeft = 60;
+  scoreDiv.textContent = `得点: ${score}`;
+  timerDiv.textContent = `残り時間: ${timeLeft}秒`;
+  resultDiv.style.display = "none";
+  shareDiv.style.display = "none";
+
+  // UI表示（スタートボタンは隠さない）
   timerDiv.style.display = "block";
   scoreDiv.style.display = "block";
   questionDiv.style.display = "block";
   btn1.style.display = "inline-block";
   btn2.style.display = "inline-block";
+
   nextQuestion();
+
+  // タイマー開始
   timerId = setInterval(() => {
     timeLeft--;
     timerDiv.textContent = `残り時間: ${timeLeft}秒`;
