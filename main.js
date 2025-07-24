@@ -80,3 +80,84 @@ const players = [
   { "number": "130", "name": "ラミレス" },
   { "number": "131", "name": "ロベルト" }
 ];
+
+
+let score = 0;
+let timeLeft = 60;
+let timerId;
+
+const startBtn = document.getElementById("startBtn");
+const timerDiv = document.getElementById("timer");
+const scoreDiv = document.getElementById("score");
+const questionDiv = document.getElementById("question");
+const btn1 = document.getElementById("btn1");
+const btn2 = document.getElementById("btn2");
+const judgeDiv = document.getElementById("judge");
+const resultDiv = document.getElementById("result");
+const shareDiv = document.getElementById("share");
+const shareLink = document.getElementById("shareLink");
+
+startBtn.addEventListener("click", () => {
+  startBtn.style.display = "none";
+  timerDiv.style.display = "block";
+  scoreDiv.style.display = "block";
+  questionDiv.style.display = "block";
+  btn1.style.display = "inline-block";
+  btn2.style.display = "inline-block";
+  nextQuestion();
+  timerId = setInterval(() => {
+    timeLeft--;
+    timerDiv.textContent = `残り時間: ${timeLeft}秒`;
+    if (timeLeft <= 0) {
+      clearInterval(timerId);
+      endGame();
+    }
+  }, 1000);
+});
+
+function nextQuestion() {
+  const current = players[Math.floor(Math.random() * players.length)];
+  let wrong;
+  do {
+    wrong = players[Math.floor(Math.random() * players.length)];
+  } while (wrong.number === current.number);
+
+  questionDiv.textContent = `${current.name} の背番号は？`;
+  const isFirst = Math.random() < 0.5;
+  btn1.textContent = isFirst ? current.number : wrong.number;
+  btn2.textContent = isFirst ? wrong.number : current.number;
+
+  function judgeAnswer(e) {
+    const isCorrect = e.target.textContent === current.number;
+    showJudge(isCorrect);
+    score += isCorrect ? 1 : -1;
+    scoreDiv.textContent = `得点: ${score}`;
+    btn1.removeEventListener("click", judgeAnswer);
+    btn2.removeEventListener("click", judgeAnswer);
+    setTimeout(nextQuestion, 600);
+  }
+
+  btn1.addEventListener("click", judgeAnswer);
+  btn2.addEventListener("click", judgeAnswer);
+}
+
+function showJudge(isCorrect) {
+  judgeDiv.style.display = "block";
+  judgeDiv.textContent = isCorrect ? "⭕️" : "❌️";
+  judgeDiv.style.color = isCorrect ? "green" : "red";
+  setTimeout(() => {
+    judgeDiv.style.display = "none";
+  }, 500);
+}
+
+function endGame() {
+  questionDiv.style.display = "none";
+  btn1.style.display = "none";
+  btn2.style.display = "none";
+  resultDiv.style.display = "block";
+  resultDiv.textContent = `あなたのスコア: ${score} 点`;
+
+  const tweet = `CARP NUMBER QUIZ 2025\\nスコア: ${score} 点\\n#カープ #クイズ\\n\\nhttps://kkp-15.github.io/carp-number-quiz/\\n\\n@kkp_webninja`;
+  shareLink.href = `https://twitter.com/intent/tweet?text=${encodeURIComponent(tweet)}`;
+  shareDiv.style.display = "block";
+}
