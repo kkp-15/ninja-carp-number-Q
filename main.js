@@ -93,6 +93,7 @@ const btn2 = document.getElementById('btn2');
 const resultEl = document.getElementById('result');
 const shareDiv = document.getElementById('share');
 const shareLink = document.getElementById('shareLink');
+const judgeEl = document.getElementById('judge');
 
 function startTimer() {
   timerInterval = setInterval(() => {
@@ -140,11 +141,17 @@ function showQuestion() {
 function answer(isCorrect) {
   if (isCorrect) {
     score++;
+    judgeEl.textContent = "⭕️";
   } else {
     score = Math.max(0, score - 1);
+    judgeEl.textContent = "❌";
   }
   scoreEl.textContent = "得点: " + score;
-  showQuestion();
+  judgeEl.style.display = "block";
+  setTimeout(() => {
+    judgeEl.style.display = "none";
+    showQuestion();
+  }, 600);
 }
 
 function endGame() {
@@ -154,7 +161,7 @@ function endGame() {
   resultEl.style.display = "block";
   resultEl.textContent = `あなたのスコア: ${score} 点`;
   shareDiv.style.display = "block";
-  const tweet = `CARP NUMBER QUIZ⚾\\nスコア: ${score}点\\n#カープ #背番号クイズ`;
+  const tweet = `CARP NUMBER QUIZ⚾\nスコア: ${score}点\n#カープ #背番号クイズ`;
   const url = encodeURIComponent(window.location.href);
   shareLink.href = `https://twitter.com/intent/tweet?text=${encodeURIComponent(tweet)}&url=${url}`;
 }
