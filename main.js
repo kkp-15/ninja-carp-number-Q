@@ -1,11 +1,12 @@
 const players = [
+  { "number": " !", "name": "スラィリー" },
   { "number": "00", "name": "羽月 隆太郎" },
-  { "number": "00", "name": "上本 崇司" },
-  { "number": "02", "name": "田中 広輔" },
-  { "number": "04", "name": "矢野 雅哉" },
-  { "number": "05", "name": "小園 海斗" },
-  { "number": "07", "name": "堂林 翔太" },
-  { "number": "09", "name": "秋山 翔吾" },
+  { "number": " 0", "name": "上本 崇司" },
+  { "number": " 2", "name": "田中 広輔" },
+  { "number": " 4", "name": "矢野 雅哉" },
+  { "number": " 5", "name": "小園 海斗" },
+  { "number": " 7", "name": "堂林 翔太" },
+  { "number": " 9", "name": "秋山 翔吾" },
   { "number": "10", "name": "佐々木 泰" },
   { "number": "12", "name": "大道 温貴" },
   { "number": "13", "name": "森浦 大輔" },
@@ -156,7 +157,7 @@ function endGame() {
   resultDiv.style.display = "block";
   resultDiv.textContent = `あなたのスコア: ${score} 点`;
 
-  const tweet = `CARP NUMBER QUIZ 2025\\nスコア: ${score} 点\\n#カープ #クイズ\\n\\nhttps://kkp-15.github.io/carp-number-quiz/\\n\\n@kkp_webninja`;
+  const tweet = `CARP NUMBER QUIZ 2025\nスコア: ${score} 点\n#カープ #クイズ\n\nhttps://kkp-15.github.io/carp-number-quiz/\n\n@kkp_webninja`;
   shareLink.href = `https://twitter.com/intent/tweet?text=${encodeURIComponent(tweet)}`;
   shareDiv.style.display = "block";
 }
