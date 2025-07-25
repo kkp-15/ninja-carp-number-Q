@@ -167,7 +167,7 @@ function endGame() {
   resultDiv.style.display = "block";
   resultDiv.textContent = `あなたのスコア: ${score} 点`;
 
-  const tweet = `CARP NUMBER QUIZ 2025\nスコア: ${score} 点\n#カープ #クイズ\n\nhttps://kkp-15.github.io/carp-number-quiz/\n\n@kkp_webninja`;
+  const tweet = `CARP NUMBER QUIZ 2025\nスコア: ${score} 点\n#カープ #クイズ\n\nhttps://kkp-15.github.io/carp-number-quiz/?v=2\n\n@kkp_webninja`;
   shareLink.href = `https://twitter.com/intent/tweet?text=${encodeURIComponent(tweet)}`;
   shareDiv.style.display = "block";
 }
