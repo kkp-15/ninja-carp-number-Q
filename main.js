@@ -171,4 +171,3 @@ function endGame() {
   shareLink.href = `https://twitter.com/intent/tweet?text=${encodeURIComponent(tweet)}`;
   shareDiv.style.display = "block";
 }
-}
