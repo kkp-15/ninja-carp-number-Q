@@ -141,14 +141,25 @@ function nextQuestion() {
   const isFirst = Math.random() < 0.5;
   btn1.textContent = isFirst ? correct.number : wrong.number;
   btn2.textContent = isFirst ? wrong.number : correct.number;
+
+  // ボタンを有効に戻す
+  btn1.disabled = false;
+  btn2.disabled = false;
 }
 
 function handleAnswer(selected) {
+  // ボタン連打防止
+  btn1.disabled = true;
+  btn2.disabled = true;
+
   const isCorrect = selected === currentQuestion.number;
   showJudge(isCorrect);
   score += isCorrect ? 1 : -1;
   scoreDiv.textContent = `得点: ${score}`;
-  setTimeout(nextQuestion, 600);
+
+  setTimeout(() => {
+    nextQuestion();
+  }, 600);
 }
 
 function showJudge(isCorrect) {
